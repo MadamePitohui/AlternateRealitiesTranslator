@@ -6,3 +6,5 @@
 [Customer Service](https://docs.google.com/presentation/d/1OuEWte7hHuF28ZVllfJGHPYNnyPYNnvFAMCHgpsjypQ/edit?slide=id.p#slide=id.p)
 
 [Senior](https://docs.google.com/presentation/d/1YHMvTo4eHjARqVAXGEk89RBNyGlgY-K88M21-TK8_gE/edit?usp=sharing)
+
+[Parent of a Deaf Child](https://docs.google.com/presentation/d/1ZNys7FdTZm0aSLE2xt44v1i4ZTs0hd-kbp2auoeNKOQ/edit?usp=sharing)
