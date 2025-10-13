@@ -106,7 +106,7 @@ Enforcement/ Feedback: We can talk about this. Face-to-face time is valuable, co
 
 
 [wilhe signature](https://drive.google.com/file/d/1EpUEu3B1sx8TDm60frvn_MQPAsnm3QTD/view?usp=drive_link)
-![chloe signature]([docs/Signed _CXM_ (1).png](https://github.com/MadamePitohui/AlternateRealitiesTranslator/blob/06cfb8631853e98a0fb6c24520e444190d48bdce/docs/Signed%20_CXM_%20(1).png))
+![chloe signature](https://github.com/MadamePitohui/AlternateRealitiesTranslator/blob/06cfb8631853e98a0fb6c24520e444190d48bdce/docs/Signed%20_CXM_%20(1).png)
 [david signature](https://drive.google.com/file/d/1W8yEmJymzC7MfvFic_VeeZF_exgZHtaz/view?usp=drive_link)
 [milan signature](https://drive.google.com/file/d/1N8UaLLRjCYWT_UYropcrHeAxJB_dwD_S/view?usp=drive_link)
 [olamide signature](https://drive.google.com/file/d/1UhwxUYtv95Y3GYoR5st1-8jLTWksZ0kz/view?usp=drive_link)
