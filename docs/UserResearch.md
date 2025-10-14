@@ -21,8 +21,8 @@
   - Total respondents: 21
     - Students: 90.5%
   - Purpose of using the app:
-    - 75% — to learn sign language
-    - 20% — to communicate with deaf individuals
+    - 75% - to learn sign language
+    - 20% - to communicate with deaf individuals
   - Feature preference:
     - 90% would like a spoken English to sign language translation feature
 - Team Action: Make Interactive videos and quizzes
