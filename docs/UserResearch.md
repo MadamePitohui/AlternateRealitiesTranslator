@@ -14,7 +14,7 @@
   - Supporting Data: 90.5 percent of people wanted this 
   - Team Action (if any): Since so many want english to sign language we should at least make that a mvp for the end of the semester.
 
-- Observation 3:
+- Observation 5:
 Most people who responded to the survey were students.
 For the design request, I noticed that most people would benefit more from having a learning section integrated with quizzes to confirm their knowledge about the signs they learned.
 Most participants were not familiar with sign language and would use the app to learn sign language.
