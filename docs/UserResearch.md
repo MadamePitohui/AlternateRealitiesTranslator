@@ -1,6 +1,6 @@
 - Observation 1: Personal Use
   - Observation Statement: Majority of the responses state that they want to use the app to learn sign language
-  - Supporting Data: 71.4% of responses indicate usage primarily for eaducation
+  - Supporting Data: 75% of responses indicate usage primarily for eaducation
 - Observation 2:
   - Observation Statement:
   - Supporting Data:
