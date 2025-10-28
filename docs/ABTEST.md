@@ -43,7 +43,7 @@ Decision Rule:
 Ship the colorful + goals version if it shows higher engagement or more goal adds with no performance issues.
 
 
-
+#
 
 David-A/B Test Name
 What page to start on? (Home Screen vs. Main Screen)
@@ -71,3 +71,27 @@ B: Start directly on Main Screen with short tooltip
 Success Criteria
 If users on the Main Screen show higher happiness and faster task completion, we’ll make it the default starting page.
 
+
+#
+
+A/B Test Name: Lesson Locks
+
+User Story Number: US4 - Golden Path
+
+Metrics: Retention, Task Success.
+
+Hypothesis: Users are allowed to explore the full body of lessons at their leisure → users will be motivated to keep learning, having gained first-hand experience for what they can build up to.
+
+Problem & Impact: At the start of learning a new skill, there can be a frustrating disconnect between groundwork and final desired skills. It can feel like the small stuff is not worth trying, and the hard stuff requires talent. By fostering curiosity and allowing users to fail above their assigned skill level, they are allowed to explore and find their own learning styles. Experienced first-time users also do not need to prove themselves on placement tests or prior levels before progressing.
+
+Experiment: Randomly assign 50% new users to unlocked lessons (variation), and 50% to locked lesson paths (control) with Firebase Remote Config.
+
+Track: 
+- user_XP (unlocked users more or less?) (Task Success), 
+- user_level (unlocked users passed any extra milestones?) (Task Success) (Retention), 
+- pages_viewed (unlocked users exploring?) (Task Success)
+
+Variations: variant A disables lesson blocks above the user's current level, making the widgets uninteractable. 
+variant B lacks all locked-block UI and functionality changes, allowing free movement between all lessons.
+
+See U4 Figmas for unlocked lesson blocks for variant B.
