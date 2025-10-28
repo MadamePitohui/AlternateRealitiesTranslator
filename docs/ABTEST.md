@@ -41,3 +41,33 @@ Slight rounded borders and friendly tone
 
 Decision Rule:
 Ship the colorful + goals version if it shows higher engagement or more goal adds with no performance issues.
+
+
+
+
+David-A/B Test Name
+What page to start on? (Home Screen vs. Main Screen)
+User Story Number
+User Story 4 – Golden Path
+Metrics
+Happiness (primary) – user satisfaction rating after first session
+Secondary: Engagement (time to first action) and Task Success (completion of golden-path action)
+Hypothesis
+Users who start directly on the Main Screen will be happier and complete tasks faster than those who start on the Home Screen, because it removes an extra step and gets them to the core action sooner.
+Problem
+Some users are confused about where to begin, which lowers satisfaction and slows completion of the main task.
+Experiment
+Using Firebase A/B Testing with Remote Config, randomly send:
+50% of new users to the Home Screen (control)
+50% to the Main Screen (treatment)
+Track:
+happiness_survey_response (1–5 scale)
+time_to_first_action
+golden_action_completed
+Run the test until enough users participate to compare average happiness and completion rates.
+Variations
+A: Start on Home Screen → tap “Get Started” → Main Screen
+B: Start directly on Main Screen with short tooltip
+Success Criteria
+If users on the Main Screen show higher happiness and faster task completion, we’ll make it the default starting page.
+
