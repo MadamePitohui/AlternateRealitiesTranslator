@@ -95,3 +95,95 @@ Variations: variant A disables lesson blocks above the user's current level, mak
 variant B lacks all locked-block UI and functionality changes, allowing free movement between all lessons.
 
 See U4 Figmas for unlocked lesson blocks for variant B.
+
+
+#
+
+
+A/B Test – Enhanced Profile Setup (with Customization) vs Default Profile Setup
+
+User Story Number: US2 – Login / Sign Up Flow
+
+Metrics (HEART Framework):
+
+Happiness (PRIMARY):
+% of users who stay on the profile setup page ≥10 seconds (profile_positive_time) or interact with at least one customization option
+
+Engagement:
+Average time spent on profile setup (time_on_profile), number of profile edits (profile_edit_start), profile picture uploads (profile_pic_upload), and color/theme selections (theme_select)
+
+Adoption:
+% of new users who complete at least one profile field (bio, picture, or color) before exiting (profile_completion_success)
+
+Guardrail:
+Crash-free sessions; no slower login/signup time; no significant drop in sign-up completions
+
+Hypothesis:
+
+Allowing users to personalize their profile immediately after sign-up (by adding a profile picture, editing their bio, and choosing an app color) will make the onboarding experience feel more personal and enjoyable—leading to higher satisfaction and more engagement with their profile.
+
+Problem & Impact:
+
+The current login and sign-up flow is basic, showing minimal personalization. Users may not feel connected to their account or motivated to explore the app. Adding immediate customization options can foster a sense of ownership and improve long-term retention by making the app feel “theirs.”
+
+Experiment Setup (Firebase):
+
+Audience:
+All new users (first-time sign-up only)
+
+Split:
+50/50; run for 10–14 days
+
+Remote Config Key:
+profile_setup_variant ∈ {default,customized}
+
+Tracking (Analytics Events):
+
+signup_success { variant }
+
+profile_edit_start { variant }
+
+profile_pic_upload { variant }
+
+theme_select { variant }
+
+time_on_profile { ms, variant }
+
+profile_completion_success { variant }
+
+profile_positive_time (≥10s viewed)
+
+Variations:
+
+A — Control (Default Setup):
+
+Standard login (username + password)
+
+Sign-up (username, password, confirm password)
+
+Redirect to a basic profile page (name, bio, XP, level, progress shown)
+
+B — Treatment (Enhanced Customization):
+
+Same login/sign-up flow
+
+After sign-up, users are prompted to:
+
+Upload a profile picture
+
+Edit name and bio
+
+Choose an app color/theme (light/dark/warm tone options)
+
+Subtle onboarding tips encouraging personalization
+
+Decision Rule:
+
+Ship the Enhanced Customization flow if it increases:
+
+Time spent on profile setup
+
+Profile completion rate
+
+Positive engagement (e.g., color/theme selection)
+without harming performance or increasing sign-up abandonment.
