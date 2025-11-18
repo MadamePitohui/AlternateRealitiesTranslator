@@ -3,5 +3,5 @@
 
 [US3: Profile Creation- Olamide Britto](https://docs.google.com/presentation/d/1KI3yKm87pFaU5FlLRV7Dj1N-6e29F0n1UVqDlQNHZlc/edit?usp=sharing)
 
-
+[US5: - Chloe Meyer](https://docs.google.com/presentation/d/1_mNpgZlJTmgSO2BmKHIsmOOeQLVpPTcsFKYzqYjqa3I/edit?usp=sharing)
 
