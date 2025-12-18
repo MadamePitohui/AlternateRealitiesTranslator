@@ -138,3 +138,72 @@ String? getImageAlphabetBSL(String? letter) {
 
   return alphabetImages[letter?.toUpperCase()];
 }
+
+List<String>? initAlphabetAnswers() {
+  // i need to generate a list of four distinct integers between 0 and 25
+  final Set<int> distinctIntegers = {};
+  final List<String> alphabet = <String>[
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ];
+  final List<String> answers = <String>[];
+  final math.Random random = math.Random();
+
+  while (distinctIntegers.length < 4) {
+    // in set, each object can only occur once
+    distinctIntegers.add(random.nextInt(26));
+  }
+
+  // ordered list obtained of four unique indices for alphabet list
+  final List<int> distinctIntegersList = distinctIntegers.toList();
+
+  for (int i = 0; i < 4; i++) {
+    // populate answers list with letters indexed by distinct numbers
+    answers.add(alphabet[distinctIntegersList[i]]);
+  }
+
+  return answers;
+}
+
+/// returns all text before the @ character of input email
+String? getEmailNickname(String? email) {
+  // return all text before the @ character found in email strings
+  if (email == null) return null; // Check if email is null
+  int atIndex = email.indexOf('@'); // Find the index of '@'
+  return atIndex != -1
+      ? email.substring(0, atIndex)
+      : email; // Return substring before '@'
+}
+
+int calculateLevelFromXP(int experience) {
+  if (experience < 1000) return 1;
+  if (experience < 2000) return 2;
+  if (experience < 3000) return 3;
+  if (experience < 4000) return 4;
+  if (experience < 5000) return 5;
+  return 6;
+}

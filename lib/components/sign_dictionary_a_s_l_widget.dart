@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sign_dictionary_a_s_l_model.dart';
 export 'sign_dictionary_a_s_l_model.dart';
 
@@ -56,7 +59,7 @@ class _SignDictionaryASLWidgetState extends State<SignDictionaryASLWidget> {
             child: Image.network(
               valueOrDefault<String>(
                 functions.getImageAlphabetASL(valueOrDefault<String>(
-                  widget.englishInput,
+                  widget!.englishInput,
                   'A',
                 )),
                 'https://firebasestorage.googleapis.com/v0/b/alternate-reailities-tr-069d6p.firebasestorage.app/o/asl%2Falphabet-1%2FASL_A.jpg?alt=media&token=d2b4e9cd-0955-4ee2-b712-d1c6c832cf35',
@@ -70,7 +73,7 @@ class _SignDictionaryASLWidgetState extends State<SignDictionaryASLWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget.englishInput,
+                widget!.englishInput,
                 'A',
               ),
               style: FlutterFlowTheme.of(context).displayLarge.override(

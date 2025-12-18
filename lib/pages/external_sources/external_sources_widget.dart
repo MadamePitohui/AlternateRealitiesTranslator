@@ -2,9 +2,12 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'external_sources_model.dart';
 export 'external_sources_model.dart';
 
@@ -189,7 +192,7 @@ class _ExternalSourcesWidgetState extends State<ExternalSourcesWidget> {
                                     onChanged: (val) => safeSetState(
                                         () => _model.dropDownValue = val),
                                     width: double.infinity,
-                                    height: 40.0,
+                                    height: 50.0,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -227,7 +230,7 @@ class _ExternalSourcesWidgetState extends State<ExternalSourcesWidget> {
                                     borderColor: Color(0xB1100310),
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
-                                    margin: EdgeInsets.all(20.0),
+                                    margin: EdgeInsets.all(10.0),
                                     hidesUnderline: true,
                                     isOverButton: false,
                                     isSearchable: false,

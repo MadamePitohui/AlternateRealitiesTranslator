@@ -7,7 +7,7 @@ Future initializeFirebaseRemoteConfig() async {
       minimumFetchInterval: const Duration(hours: 1),
     ));
     await FirebaseRemoteConfig.instance.setDefaults(const {
-      'Background_color': '#8B5794F2',
+      'Background_color': '6F4EBC',
     });
     await FirebaseRemoteConfig.instance.fetchAndActivate();
   } catch (error) {

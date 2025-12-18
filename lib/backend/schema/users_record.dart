@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,6 +46,31 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
+  // "experience" field.
+  int? _experience;
+  int get experience => _experience ?? 0;
+  bool hasExperience() => _experience != null;
+
+  // "level" field.
+  int? _level;
+  int get level => _level ?? 0;
+  bool hasLevel() => _level != null;
+
+  // "bio" field.
+  String? _bio;
+  String get bio => _bio ?? '';
+  bool hasBio() => _bio != null;
+
+  // "username" field.
+  String? _username;
+  String get username => _username ?? '';
+  bool hasUsername() => _username != null;
+
+  // "language" field.
+  String? _language;
+  String get language => _language ?? '';
+  bool hasLanguage() => _language != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -52,6 +78,11 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
+    _experience = castToType<int>(snapshotData['experience']);
+    _level = castToType<int>(snapshotData['level']);
+    _bio = snapshotData['bio'] as String?;
+    _username = snapshotData['username'] as String?;
+    _language = snapshotData['language'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -94,6 +125,11 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  int? experience,
+  int? level,
+  String? bio,
+  String? username,
+  String? language,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -103,6 +139,11 @@ Map<String, dynamic> createUsersRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
+      'experience': experience,
+      'level': level,
+      'bio': bio,
+      'username': username,
+      'language': language,
     }.withoutNulls,
   );
 
@@ -119,7 +160,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.experience == e2?.experience &&
+        e1?.level == e2?.level &&
+        e1?.bio == e2?.bio &&
+        e1?.username == e2?.username &&
+        e1?.language == e2?.language;
   }
 
   @override
@@ -129,7 +175,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
-        e?.phoneNumber
+        e?.phoneNumber,
+        e?.experience,
+        e?.level,
+        e?.bio,
+        e?.username,
+        e?.language
       ]);
 
   @override

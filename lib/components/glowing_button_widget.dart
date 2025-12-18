@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'glowing_button_model.dart';
 export 'glowing_button_model.dart';
 
@@ -97,7 +98,7 @@ class _GlowingButtonWidgetState extends State<GlowingButtonWidget> {
               print('Button pressed ...');
             },
             text: valueOrDefault<String>(
-              widget.buttonText,
+              widget!.buttonText,
               'text',
             ),
             options: FFButtonOptions(
