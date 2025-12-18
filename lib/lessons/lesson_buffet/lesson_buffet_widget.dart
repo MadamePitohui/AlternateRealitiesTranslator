@@ -1,11 +1,17 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/stripe/payment_manager.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'lesson_buffet_model.dart';
 export 'lesson_buffet_model.dart';
 
@@ -43,6 +49,8 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -76,11 +84,16 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                         FlutterFlowDropDown<String>(
                           controller: _model.dropDownValueController ??=
                               FormFieldController<String>(
-                            _model.dropDownValue ??= 'ASL',
+                            _model.dropDownValue ??= FFAppState().signLanguage,
                           ),
                           options: ['ASL', 'BSL'],
-                          onChanged: (val) =>
-                              safeSetState(() => _model.dropDownValue = val),
+                          onChanged: (val) async {
+                            safeSetState(() => _model.dropDownValue = val);
+                            logFirebaseEvent(
+                                'LESSON_BUFFET_DropDown_rwu0e3u5_ON_FORM_');
+                            logFirebaseEvent('DropDown_update_app_state');
+                            FFAppState().signLanguage = _model.dropDownValue!;
+                          },
                           width: 100.0,
                           height: 40.0,
                           textStyle:
@@ -93,6 +106,7 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                    color: Colors.white,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -101,7 +115,7 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                          hintText: 'ASL',
+                          hintText: FFAppState().signLanguage,
                           icon: Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -174,9 +188,121 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                       onPressed: () async {
                         logFirebaseEvent(
                             'LESSON_BUFFET_PAGE_ALPHABET_BTN_ON_TAP');
-                        logFirebaseEvent('Button_navigate_to');
+                        logFirebaseEvent('Button_update_app_state');
+                        FFAppState().alphabetQuizAnswers = functions
+                            .initAlphabetAnswers()!
+                            .toList()
+                            .cast<String>();
+                        safeSetState(() {});
+                        if (FFAppState().signLanguage == 'ASL') {
+                          if (random_data.randomInteger(0, 1) == 0) {
+                            logFirebaseEvent('Button_navigate_to');
 
-                        context.pushNamed(ASLalphabetDemoWidget.routeName);
+                            context.pushNamed(
+                              ASLalphabetWidget.routeName,
+                              queryParameters: {
+                                'userDoc': serializeParam(
+                                  currentUserReference,
+                                  ParamType.DocumentReference,
+                                ),
+                              }.withoutNulls,
+                            );
+                          } else {
+                            if (random_data.randomInteger(0, 1) == 0) {
+                              logFirebaseEvent('Button_navigate_to');
+
+                              context.pushNamed(
+                                ASLalphabet1Widget.routeName,
+                                queryParameters: {
+                                  'userDoc': serializeParam(
+                                    currentUserReference,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              if (random_data.randomInteger(0, 1) == 0) {
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(
+                                  ASLalphabet2Widget.routeName,
+                                  queryParameters: {
+                                    'userDoc': serializeParam(
+                                      currentUserReference,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              } else {
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(
+                                  ASLalphabet3Widget.routeName,
+                                  queryParameters: {
+                                    'userDoc': serializeParam(
+                                      currentUserReference,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
+                            }
+                          }
+                        } else {
+                          if (random_data.randomInteger(0, 10) < 2) {
+                            logFirebaseEvent('Button_navigate_to');
+
+                            context.pushNamed(
+                              BSLalphabetWidget.routeName,
+                              queryParameters: {
+                                'userDoc': serializeParam(
+                                  currentUserReference,
+                                  ParamType.DocumentReference,
+                                ),
+                              }.withoutNulls,
+                            );
+                          } else {
+                            if (random_data.randomInteger(0, 1) == 0) {
+                              logFirebaseEvent('Button_navigate_to');
+
+                              context.pushNamed(
+                                BSLalphabet1Widget.routeName,
+                                queryParameters: {
+                                  'userDoc': serializeParam(
+                                    currentUserReference,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              if (random_data.randomInteger(0, 1) == 0) {
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(
+                                  BSLalphabet2Widget.routeName,
+                                  queryParameters: {
+                                    'userDoc': serializeParam(
+                                      currentUserReference,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              } else {
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(
+                                  BSLalphabet3Widget.routeName,
+                                  queryParameters: {
+                                    'userDoc': serializeParam(
+                                      currentUserReference,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
+                            }
+                          }
+                        }
                       },
                       text: 'Alphabet',
                       options: FFButtonOptions(
@@ -242,29 +368,16 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  'Topics...',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyLarge
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyLarge
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyLarge
-                                                  .fontStyle,
-                                        ),
-                                        fontSize: 24.0,
-                                        letterSpacing: 0.0,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Vocabulary + Grammar',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      font: GoogleFonts.inter(
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .fontWeight,
@@ -272,19 +385,55 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                                             .bodyLarge
                                             .fontStyle,
                                       ),
-                                ),
-                              ],
-                            ),
+                                      fontSize: 24.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ],
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LESSON_BUFFET_PAGE_COLORS_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_stripe_payment');
+                                  final paymentResponse =
+                                      await processStripePayment(
+                                    context,
+                                    amount: 100,
+                                    currency: 'USD',
+                                    customerEmail: currentUserEmail,
+                                    description: 'Lesson payment',
+                                    allowGooglePay: true,
+                                    allowApplePay: false,
+                                    buttonColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    buttonTextColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                  );
+                                  if (paymentResponse.paymentId == null &&
+                                      paymentResponse.errorMessage != null) {
+                                    showSnackbar(
+                                      context,
+                                      'Error: ${paymentResponse.errorMessage}',
+                                    );
+                                  }
+                                  _model.paymentIdColor =
+                                      paymentResponse.paymentId ?? '';
+
+                                  safeSetState(() {});
                                 },
-                                text: 'Coming',
+                                text: 'Colors',
                                 options: FFButtonOptions(
                                   width: 120.0,
                                   height: 40.0,
@@ -320,10 +469,38 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LESSON_BUFFET_PAGE_NUMBERS_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_stripe_payment');
+                                  final paymentResponse =
+                                      await processStripePayment(
+                                    context,
+                                    amount: 100,
+                                    currency: 'USD',
+                                    customerEmail: currentUserEmail,
+                                    description: 'Lesson payment',
+                                    allowGooglePay: true,
+                                    allowApplePay: false,
+                                    buttonColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    buttonTextColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                  );
+                                  if (paymentResponse.paymentId == null &&
+                                      paymentResponse.errorMessage != null) {
+                                    showSnackbar(
+                                      context,
+                                      'Error: ${paymentResponse.errorMessage}',
+                                    );
+                                  }
+                                  _model.paymentIdNum =
+                                      paymentResponse.paymentId ?? '';
+
+                                  safeSetState(() {});
                                 },
-                                text: 'Soon',
+                                text: 'Numbers',
                                 options: FFButtonOptions(
                                   width: 120.0,
                                   height: 40.0,
@@ -365,10 +542,38 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LESSON_BUFFET_PAGE_ANIMALS_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_stripe_payment');
+                                  final paymentResponse =
+                                      await processStripePayment(
+                                    context,
+                                    amount: 100,
+                                    currency: 'USD',
+                                    customerEmail: currentUserEmail,
+                                    description: 'Lesson payment',
+                                    allowGooglePay: true,
+                                    allowApplePay: false,
+                                    buttonColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    buttonTextColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                  );
+                                  if (paymentResponse.paymentId == null &&
+                                      paymentResponse.errorMessage != null) {
+                                    showSnackbar(
+                                      context,
+                                      'Error: ${paymentResponse.errorMessage}',
+                                    );
+                                  }
+                                  _model.paymentIdAnimals =
+                                      paymentResponse.paymentId ?? '';
+
+                                  safeSetState(() {});
                                 },
-                                text: 'Coming',
+                                text: 'Animals',
                                 options: FFButtonOptions(
                                   width: 120.0,
                                   height: 40.0,
@@ -404,10 +609,38 @@ class _LessonBuffetWidgetState extends State<LessonBuffetWidget> {
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LESSON_BUFFET_PAGE_FAMILY_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_stripe_payment');
+                                  final paymentResponse =
+                                      await processStripePayment(
+                                    context,
+                                    amount: 100,
+                                    currency: 'USD',
+                                    customerEmail: currentUserEmail,
+                                    description: 'Lesson payment',
+                                    allowGooglePay: true,
+                                    allowApplePay: false,
+                                    buttonColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    buttonTextColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                  );
+                                  if (paymentResponse.paymentId == null &&
+                                      paymentResponse.errorMessage != null) {
+                                    showSnackbar(
+                                      context,
+                                      'Error: ${paymentResponse.errorMessage}',
+                                    );
+                                  }
+                                  _model.paymentIdFamily =
+                                      paymentResponse.paymentId ?? '';
+
+                                  safeSetState(() {});
                                 },
-                                text: 'Soon',
+                                text: 'Family',
                                 options: FFButtonOptions(
                                   width: 120.0,
                                   height: 40.0,

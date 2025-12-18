@@ -3,9 +3,12 @@ import '/components/sign_dictionary_b_s_l_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sign_dictionary_model.dart';
 export 'sign_dictionary_model.dart';
 
@@ -43,6 +46,8 @@ class _SignDictionaryWidgetState extends State<SignDictionaryWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -161,11 +166,23 @@ class _SignDictionaryWidgetState extends State<SignDictionaryWidget> {
                                       controller:
                                           _model.dropDownValueController ??=
                                               FormFieldController<String>(
-                                        _model.dropDownValue ??= 'ASL',
+                                        _model.dropDownValue ??=
+                                            valueOrDefault<String>(
+                                          FFAppState().signLanguage,
+                                          'BSL',
+                                        ),
                                       ),
                                       options: ['ASL', 'BSL'],
-                                      onChanged: (val) => safeSetState(
-                                          () => _model.dropDownValue = val),
+                                      onChanged: (val) async {
+                                        safeSetState(
+                                            () => _model.dropDownValue = val);
+                                        logFirebaseEvent(
+                                            'SIGN_DICTIONARY_DropDown_etww6f29_ON_FOR');
+                                        logFirebaseEvent(
+                                            'DropDown_update_app_state');
+                                        FFAppState().signLanguage =
+                                            _model.dropDownValue!;
+                                      },
                                       width: 200.0,
                                       height: 40.0,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -191,7 +208,10 @@ class _SignDictionaryWidgetState extends State<SignDictionaryWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                      hintText: 'ASL',
+                                      hintText: valueOrDefault<String>(
+                                        FFAppState().signLanguage,
+                                        'BSL',
+                                      ),
                                       icon: Icon(
                                         Icons.keyboard_arrow_down_rounded,
                                         color: FlutterFlowTheme.of(context)
@@ -224,7 +244,7 @@ class _SignDictionaryWidgetState extends State<SignDictionaryWidget> {
                                       child: Container(
                                         height:
                                             MediaQuery.sizeOf(context).height *
-                                                0.72,
+                                                0.62,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF6F4EBC),
                                           borderRadius:

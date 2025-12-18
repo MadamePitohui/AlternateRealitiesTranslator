@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sign_dictionary_b_s_l_model.dart';
 export 'sign_dictionary_b_s_l_model.dart';
 
@@ -55,7 +58,7 @@ class _SignDictionaryBSLWidgetState extends State<SignDictionaryBSLWidget> {
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
               valueOrDefault<String>(
-                functions.getImageAlphabetBSL(widget.englishInput),
+                functions.getImageAlphabetBSL(widget!.englishInput),
                 'https://firebasestorage.googleapis.com/v0/b/alternate-reailities-tr-069d6p.firebasestorage.app/o/bsl%2FBSL_A.jpg?alt=media&token=de89cc04-d20a-488c-a33d-b10efe02f3bb',
               ),
               width: 150.0,
@@ -67,7 +70,7 @@ class _SignDictionaryBSLWidgetState extends State<SignDictionaryBSLWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget.englishInput,
+                widget!.englishInput,
                 'A',
               ),
               style: FlutterFlowTheme.of(context).displayLarge.override(

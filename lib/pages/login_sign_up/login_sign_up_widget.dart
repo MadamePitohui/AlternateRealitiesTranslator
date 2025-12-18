@@ -2,10 +2,12 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'login_sign_up_model.dart';
 export 'login_sign_up_model.dart';
 
@@ -279,6 +281,8 @@ class _LoginSignUpWidgetState extends State<LoginSignUpWidget>
                                                                   .infinity,
                                                               child:
                                                                   TextFormField(
+                                                                key: ValueKey(
+                                                                    'Signup_EmailAddress_8t1u'),
                                                                 controller: _model
                                                                     .signupEmailAddressTextController,
                                                                 focusNode: _model
@@ -485,6 +489,8 @@ class _LoginSignUpWidgetState extends State<LoginSignUpWidget>
                                                                     0.0, 0.0),
                                                             child:
                                                                 TextFormField(
+                                                              key: ValueKey(
+                                                                  'Signup_Password_lleo'),
                                                               controller: _model
                                                                   .signupPasswordTextController,
                                                               focusNode: _model
@@ -685,6 +691,8 @@ class _LoginSignUpWidgetState extends State<LoginSignUpWidget>
                                                                     0.0, 0.0),
                                                             child:
                                                                 TextFormField(
+                                                              key: ValueKey(
+                                                                  'Signup_ConfirmPassword_3xgi'),
                                                               controller: _model
                                                                   .signupConfirmPasswordTextController,
                                                               focusNode: _model
@@ -1350,12 +1358,23 @@ class _LoginSignUpWidgetState extends State<LoginSignUpWidget>
                                               return;
                                             }
 
-                                            logFirebaseEvent(
-                                                'Login_Button_navigate_to');
+                                            if (currentUserDisplayName !=
+                                                    null &&
+                                                currentUserDisplayName != '') {
+                                              logFirebaseEvent(
+                                                  'Login_Button_navigate_to');
 
-                                            context.goNamedAuth(
-                                                HomePageWidget.routeName,
-                                                context.mounted);
+                                              context.goNamedAuth(
+                                                  HomePageWidget.routeName,
+                                                  context.mounted);
+                                            } else {
+                                              logFirebaseEvent(
+                                                  'Login_Button_navigate_to');
+
+                                              context.goNamedAuth(
+                                                  ProfileSetupWidget.routeName,
+                                                  context.mounted);
+                                            }
                                           },
                                           text: 'Login',
                                           options: FFButtonOptions(
@@ -1404,6 +1423,7 @@ class _LoginSignUpWidgetState extends State<LoginSignUpWidget>
                                         ),
                                       if (_model.tabBarCurrentIndex == 0)
                                         FFButtonWidget(
+                                          key: ValueKey('SignUp_Button_v8v4'),
                                           onPressed: () async {
                                             logFirebaseEvent(
                                                 'LOGIN_SIGN_UP_PAGE_SignUp_Button_ON_TAP');
@@ -1442,8 +1462,11 @@ class _LoginSignUpWidgetState extends State<LoginSignUpWidget>
                                               return;
                                             }
 
+                                            logFirebaseEvent(
+                                                'SignUp_Button_navigate_to');
+
                                             context.goNamedAuth(
-                                                HomePageWidget.routeName,
+                                                ProfileSetupWidget.routeName,
                                                 context.mounted);
                                           },
                                           text: 'Sign Up',

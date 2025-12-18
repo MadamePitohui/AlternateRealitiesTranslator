@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -9,7 +11,10 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 import '/index.dart';
 
@@ -73,19 +78,22 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : LoginSignUpWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? NavBarPage()
+          : LoginSignUpWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LoginSignUpWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? NavBarPage()
+              : LoginSignUpWidget(),
         ),
         FFRoute(
             name: ExternalSourcesWidget.routeName,
@@ -120,15 +128,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     page: LessonBuffetWidget(),
                   )),
         FFRoute(
-            name: ProfilePageWidget.routeName,
-            path: ProfilePageWidget.routePath,
-            builder: (context, params) => params.isEmpty
-                ? NavBarPage(initialPage: 'ProfilePage')
-                : NavBarPage(
-                    initialPage: 'ProfilePage',
-                    page: ProfilePageWidget(),
-                  )),
-        FFRoute(
             name: HomePageWidget.routeName,
             path: HomePageWidget.routePath,
             builder: (context, params) => params.isEmpty
@@ -161,7 +160,132 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ASLalphabetDemoNoWidget.routeName,
           path: ASLalphabetDemoNoWidget.routePath,
           builder: (context, params) => ASLalphabetDemoNoWidget(),
-        )
+        ),
+        FFRoute(
+          name: ASLUnfinishedRedirectWidget.routeName,
+          path: ASLUnfinishedRedirectWidget.routePath,
+          builder: (context, params) => ASLUnfinishedRedirectWidget(),
+        ),
+        FFRoute(
+          name: ASLalphabetWidget.routeName,
+          path: ASLalphabetWidget.routePath,
+          builder: (context, params) => ASLalphabetWidget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ASLalphabet1Widget.routeName,
+          path: ASLalphabet1Widget.routePath,
+          builder: (context, params) => ASLalphabet1Widget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ASLalphabet2Widget.routeName,
+          path: ASLalphabet2Widget.routePath,
+          builder: (context, params) => ASLalphabet2Widget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ASLalphabet3Widget.routeName,
+          path: ASLalphabet3Widget.routePath,
+          builder: (context, params) => ASLalphabet3Widget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: BSLalphabetWidget.routeName,
+          path: BSLalphabetWidget.routePath,
+          builder: (context, params) => BSLalphabetWidget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: BSLalphabet1Widget.routeName,
+          path: BSLalphabet1Widget.routePath,
+          builder: (context, params) => BSLalphabet1Widget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: BSLalphabet2Widget.routeName,
+          path: BSLalphabet2Widget.routePath,
+          builder: (context, params) => BSLalphabet2Widget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: BSLalphabet3Widget.routeName,
+          path: BSLalphabet3Widget.routePath,
+          builder: (context, params) => BSLalphabet3Widget(
+            userDoc: params.getParam(
+              'userDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ProfileSetupWidget.routeName,
+          path: ProfileSetupWidget.routePath,
+          builder: (context, params) => ProfileSetupWidget(),
+        ),
+        FFRoute(
+          name: CelebrationWidget.routeName,
+          path: CelebrationWidget.routePath,
+          builder: (context, params) => CelebrationWidget(),
+        ),
+        FFRoute(
+          name: ProfilePageCopy2Widget.routeName,
+          path: ProfilePageCopy2Widget.routePath,
+          builder: (context, params) => ProfilePageCopy2Widget(),
+        ),
+        FFRoute(
+            name: ProfilePageWidget.routeName,
+            path: ProfilePageWidget.routePath,
+            builder: (context, params) => params.isEmpty
+                ? NavBarPage(initialPage: 'ProfilePage')
+                : NavBarPage(
+                    initialPage: 'ProfilePage',
+                    page: ProfilePageWidget(),
+                  ))
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
